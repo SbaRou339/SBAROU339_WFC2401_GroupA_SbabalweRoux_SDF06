@@ -1,64 +1,90 @@
 /* Base Styles */
 
+/* Define root-level CSS variables for consistent theming */
 :root {
-    font-size: 10px;
+    font-size: 10px; /* Set base font size for easier rem units */
+
+    --bg-color: #ffffff; /* Background color variable */
+    --text-color: #333333; /* Text color variable */
+    --accent-color: White; /* Accent color variable */
 }
 
+/* Apply box-sizing to all elements for more predictable layout */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
+/* Body Styles */
+
+/* Set base styles for the entire page */
 body {
-    font-family: "Open Sans", Arial, sans-serif;
-    min-height: 100vh;
-    background-color: white;
-    color: #fff;
-    padding-bottom: 3rem;
+    font-family: "Open Sans", Arial, sans-serif; /* Use Open Sans as the default font family */
+    min-height: 100vh; /* Minimum height of the body to fill the viewport */
+
+    background-color: var(--bg-color); /* Use background color variable */
+    color: var(--text-color); /* Use text color variable */
+
+    padding-bottom: 3rem; /* Add padding to the bottom of the body */
 }
 
-img {
-    display: block;
+/* Header Styles */
+
+/* Style the header section */
+header {
+    background-color: var(--accent-color); /* Use accent color for the background */
+    border-bottom: 0.1px solid #333; /* Add a subtle border at the bottom */
+    padding: 10px 0; /* Add padding to the header */
 }
 
 /* Reset some default styles */
 
+/* Reset margin and padding for h1 elements */
 h1 {
     margin: 1px;
     padding: 0;
 }
 
+/* Container Styles */
 
+/* Define common styles for container elements */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 1200px; /* Set maximum width for better readability on larger screens */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding inside the container */
 }
 
-header {
-    background-color: #615a5a;
-    border-bottom: 1px solid #333;
-    padding: 10px 0;
-}
+/* Profile Section Styles */
 
+/* Style the profile section using flexbox for a responsive layout */
 .profile {
     display: flex;
     align-items: center;
+    font-size: 17px; /* Set font size for the profile section */
 }
 
+/* Style the profile image */
 .profile-image img {
-    border-radius: 50%;
+    border-radius: 50%; /* Apply a circular border-radius to the profile image */
     width: 80px;
     height: 80px;
-    object-fit: cover;
-    filter: grayscale(100%);
+    object-fit: cover; /* Ensure the image covers the entire container */
 }
 
+/* Style the profile user settings */
 .profile-user-settings {
-    margin-left: 20px;
+    margin-left: 20px; /* Add margin to the user settings */
 }
 
+/* Style various profile elements */
+.profile-real-name,
+.profile-stat-count,
+.profile-edit-btn {
+    font-weight: 600; /* Set font weight for specific elements */
+}
+
+/* Style profile buttons */
 .profile-user-settings button {
     background-color: #fff;
     color: #000;
@@ -66,7 +92,7 @@ header {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add smooth transitions on hover */
 }
 
 .profile-user-settings button:hover {
@@ -74,16 +100,20 @@ header {
     color: #fff;
 }
 
+/* Style the profile statistics */
 .profile-stats {
     display: flex;
-    list-style: none;
     margin: 10px 0;
 }
 
 .profile-stats li {
     margin-right: 20px;
+    list-style: none;
 }
 
+/* Gallery Section Styles */
+
+/* Style the gallery section using CSS Grid for responsive layout */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -91,34 +121,39 @@ header {
     margin-top: 20px;
 }
 
+/* Style individual gallery items with hover effects */
 .gallery-item {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-.gallery-item:hover {
+.gallery-item:hover .gallery-item-info,
+.gallery-item:focus .gallery-item-info {
     transform: scale(1.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.gallery-item-info {
+    display: none; /* Initially hide gallery item info */
+    color: white;
+    font-size: 15px;
 }
 
 .gallery-image {
     width: 100%;
     height: auto;
     border-radius: 10px;
-}
-
-.gallery-item-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
 }
 
 .gallery-item-info ul {
@@ -130,6 +165,9 @@ header {
     margin-right: 10px;
 }
 
+/* Loader Styles */
+
+/* Style the loader animation */
 .loader {
     border: 8px solid #615a5a;
     border-top: 8px solid #fff;
@@ -146,6 +184,8 @@ header {
 }
 
 /* Media queries for responsiveness */
+
+/* Adjust styles for smaller screens */
 @media screen and (max-width: 768px) {
     .profile {
         flex-direction: column;
